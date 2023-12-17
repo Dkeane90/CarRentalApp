@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CarRentalApp
@@ -16,5 +9,41 @@ namespace CarRentalApp
         {
             InitializeComponent();
         }
+
+        private void BtnSubmit_Click(object sender, EventArgs e)
+        {
+            string customerName = tbCustomerName.Text;
+            var dateOut = dtRented.Value;
+            var dateIn = dtReturned.Value;
+            var carType = cbCarType.SelectedItem.ToString();
+            double cost = Convert.ToDouble(tbCost.Text);
+
+            var isValid = true;
+
+            if (string.IsNullOrWhiteSpace(customerName) || string.IsNullOrWhiteSpace(carType))
+            {
+                isValid = false;
+                MessageBox.Show("Please enter missing data!");
+            }
+
+            if (dateOut > dateIn)
+            {
+                isValid = false;
+                MessageBox.Show("Invalid date selection!");
+            }
+
+            if (isValid == true)
+            {
+
+            MessageBox.Show($"Customer Name: {customerName} \n\r" +
+                $"Date Rented: {dateOut} \n\r" +
+                $"Dte Returned: {dateIn}\n\r" +
+                $"Car Type: {carType}\n\r" +
+                $"Cost: {cost}" +
+                $"THANK YOU FOR YOUR SUPPORT {customerName}!");
+            }
+
+        }
+
     }
 }
