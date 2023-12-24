@@ -12,37 +12,43 @@ namespace CarRentalApp
 
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
-            string customerName = tbCustomerName.Text;
+            string customerName = tbCustomerName.Text.ToString();
             var dateOut = dtRented.Value;
             var dateIn = dtReturned.Value;
-            var carType = string.Empty;    //cbCarType.SelectedItem.ToString();
-            double cost = Convert.ToDouble(value: tbCost.Text);
+            string carType = cbCarType.SelectedItem.ToString();
+           // var cost = Convert.ToDouble(tbCost.Text);    
 
             var isValid = true;
 
-            if (string.IsNullOrWhiteSpace(customerName) || string.IsNullOrWhiteSpace(carType))
+            if (string.IsNullOrWhiteSpace(customerName))
             {
-                isValid = false;
-                MessageBox.Show("Please enter missing data!");
+                MessageBox.Show("Please enter a name!");
             }
-
-            if (dateOut > dateIn)
+            else if (string.IsNullOrWhiteSpace(carType)) 
             {
-                isValid = false;
+                MessageBox.Show("Please select a car type!");
+
+            } 
+            else if (dateOut > dateIn)
+            {
+
                 MessageBox.Show("Invalid date selection!");
             }
-
-            if (isValid == true)
+            //else if (cost == null)
+            //{
+              //  MessageBox.Show("Please enter cost!");
+          //  }
+            else if (isValid == true)
             {
+                MessageBox.Show($"Customer Name: {customerName} \n\r" +
+               $"Date Rented: {dateOut} \n\r" +
+               $"Dte Returned: {dateIn}\n\r" +
+               $"Car Type: {carType}\n\r" +
+              //$"Cost: {cost}" +
+               $"THANK YOU FOR YOUR SUPPORT {customerName}!");
+            }            
 
-            MessageBox.Show($"Customer Name: {customerName} \n\r" +
-                $"Date Rented: {dateOut} \n\r" +
-                $"Dte Returned: {dateIn}\n\r" +
-                $"Car Type: {carType}\n\r" +
-               $"Cost: {cost}" +
-                $"THANK YOU FOR YOUR SUPPORT {customerName}!");
-            }
-
+           
         }
 
     }
