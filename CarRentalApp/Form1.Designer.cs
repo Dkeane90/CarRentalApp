@@ -116,7 +116,6 @@
             this.cbCarType.Name = "cbCarType";
             this.cbCarType.Size = new System.Drawing.Size(272, 21);
             this.cbCarType.TabIndex = 9;
-            
             // 
             // label5
             // 

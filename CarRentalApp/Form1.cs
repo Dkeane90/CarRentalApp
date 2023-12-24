@@ -15,8 +15,8 @@ namespace CarRentalApp
             string customerName = tbCustomerName.Text;
             var dateOut = dtRented.Value;
             var dateIn = dtReturned.Value;
-            var carType = cbCarType.SelectedItem.ToString();
-            double cost = Convert.ToDouble(tbCost.Text);
+            var carType = string.Empty;    //cbCarType.SelectedItem.ToString();
+            double cost = Convert.ToDouble(value: tbCost.Text);
 
             var isValid = true;
 
@@ -39,7 +39,7 @@ namespace CarRentalApp
                 $"Date Rented: {dateOut} \n\r" +
                 $"Dte Returned: {dateIn}\n\r" +
                 $"Car Type: {carType}\n\r" +
-                $"Cost: {cost}" +
+               $"Cost: {cost}" +
                 $"THANK YOU FOR YOUR SUPPORT {customerName}!");
             }
 
